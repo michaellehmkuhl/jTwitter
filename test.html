@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("jquery", "1.4.1");
+</script>
+<script type="text/javascript" src="jquery.jtwitter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    // Get latest 6 tweets by jQueryHowto
+    $.jTwitter('jQueryHowto', 10, function(data){
+        $('#posts').empty();
+        $.each(data, function(i, post){
+            $('#posts').append(
+                '<div class="post">'
+                +' <div class="txt">'
+                // See output-demo.js file for details
+                +    post.text
+                +' </div>'
+                +'</div>'
+            );
+        });
+    });
+
+    // Get latest 6 search results matching @electricpulp
+    $.jTwitterSearch('+%40electricpulp+OR+%22electric+pulp%22', 6, function(data){
+        $('#search-posts').empty();
+        $.each(data.results, function(i, post){
+            $('#search-posts').append(
+                '<div class="post">'
+                +' <div class="txt">'
+                // See output-demo-search.js file for details
+                +    post.text
+                +' </div>'
+                +'</div>'
+            );
+        });
+    });
+});
+</script>
+
+</head>
+<body>
+        <h1>jQuery Howto's Tweets</h1>
+        <div id="posts">Getting your tweets...</div>
+
+        <h1>"@electricpulp" Mentions</h1>
+        <div id="search-posts">Getting your tweets...</div>
+</body>
+</html>
