@@ -55,7 +55,6 @@
 			
 			if (!query.match(/^q=/)) query = 'q='+query;
 			var url = "http://search.twitter.com/search.json?&"+query+"&rpp="+numPosts+"&callback=?";
-console.log(url);
 			$.getJSON( url, function( data ){
 				if( $.isFunction( fnk ) ) {
 					fnk.call( this, data );
